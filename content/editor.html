@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Text File</title>
+</head>
+<body>
+    <h1>Modify Text File</h1>
+    <textarea id="text-content" style="width: 100%; height: 300px;"></textarea>
+    <br>
+    <button id="save-btn">Save Changes</button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textContent = document.getElementById('text-content');
+            const saveButton = document.getElementById('save-btn');
+
+            // Fetch the content of the text file and populate the textarea
+            fetch('writing.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); // Get the text from the response
+            })
+            .then(text => {
+                textContent.value = text; // Set the content of the textarea
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the text file:', error);
+                textContent.value = 'Unable to fetch text file.';
+            });
+
+            // Save the content of the textarea back to the text file
+            saveButton.addEventListener('click', function() {
+                const newText = textContent.value;
+                fetch('writing.txt', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: newText
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    alert('Changes saved successfully!');
+                })
+                .catch(error => {
+                    console.error('There was a problem saving the text file:', error);
+                    alert('Unable to save changes.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
