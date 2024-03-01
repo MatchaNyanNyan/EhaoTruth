@@ -1,0 +1,121 @@
+/* Global Font*/
+body { 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 15px;
+  } 
+
+/*for the logos*/
+.top_logos{
+    display: flex;
+    margin-left: 10%;
+}
+
+#logo { 
+    position: absolute; 
+    margin-top: 10px;
+    margin-left: 10px;
+    border: 1px solid #000;
+}
+
+/*for the main introductory blurb*/
+.header { 
+    text-align: right;
+    padding-bottom: 3%;
+    padding-right: 10%;
+}
+
+/*for the navigation header*/
+.Quick_Navigation_Header { 
+    margin-left: 25%;
+    margin-right: 65%;
+    border: 1px solid #000;
+    padding: 10px;
+    padding-right: 5px;
+}
+
+/*for the navigation header content*/
+.Quick_Navigation ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.Quick_Navigation li {
+    margin-right: 2%;
+}
+
+.main_show_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.show_piece {
+    width: 200px;
+    height: 100px;
+    margin-top: 2%;
+    border: 1px solid #000;
+    padding: 5%;
+    padding-top: 0%;
+}
+
+.show_piece img {
+    flex: 1;
+    max-width: 300px;
+    height: auto;
+    padding-bottom: 1%;
+}
+
+.main {
+    margin-top: 3%;
+    margin-left: 26%;
+    margin-right: 65%;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.category_list_container ul {
+    list-style-type: none;
+    display: flex;
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.category_list_container li {
+    margin-right: 2%;
+    border: 1px solid #0001;
+    margin-bottom: 0%;
+}
+
+.category_list_content {
+    display: grid;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.about {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+
+#border {
+    position: fixed;
+    bottom: -50px; /* Start below the viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom 0.3s ease; /* Transition to animate the slide-up effect */
+  }
+  
+#scroll-indicator.active {
+    bottom: 20px; /* Slide up into view */
+}
