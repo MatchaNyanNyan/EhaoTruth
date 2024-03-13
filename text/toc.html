@@ -8,8 +8,35 @@
     <title>Table of Content</title>
 </head>
 <body>
-    <div class="toc_main">
-        <p>Below is a list of things in TEST</p>
+    <a href="/index.html"><<</a>
+    <div class="chapter-list" id="file-content2">
+    <div><a href="#" class="file-link">Synopsis 1</a></div>
+    <div><a href="#" class="file-link">Synopsis 2</a></div>
+    <div><a href="#" class="file-link">Synopsis 3</a></div>
     </div>
+    <div class="toc-main" id="file-content"></div>
+<script>
+      var fileMappings = {
+            'Synopsis 1': 'library/short story/synopsis.txt',
+            'Synopsis 2': 'library/short story/short two.txt',
+            'Synopsis 3': 'library/short story/short one.txt'
+        };
+        function fetchFile(event) {
+            event.preventDefault();
+            var linkText = this.textContent; 
+            var filePath = fileMappings[linkText];
+            
+            fetch(filePath)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('file-content').innerText = text;
+                })
+                .catch(error => console.error('Error fetching the file:', error));
+        }
+        var links = document.querySelectorAll('.file-link');
+        links.forEach(function(link) {
+            link.addEventListener('click', fetchFile);
+        });
+</script>
 </body>
 </html>

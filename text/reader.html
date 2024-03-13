@@ -8,8 +8,18 @@
   <title>Reader</title>
 </head>
 <body>
+  <a href="/index.html"><<</a>
   <div class="number1">
     "Content of the chapter"
   </div>
+  <div class="number2" id="file-content"></div>
+  <script>
+    fetch('text.txt')
+        .then(response => response.text())
+        .then(text => {
+            document.getElementById('file-content').innerText = text;
+        })
+        .catch(error => console.error('Error fetching the text file:', error));
+</script>
 </body>
 </html>

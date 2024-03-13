@@ -97,20 +97,24 @@ body {
 }
 
 .custom-tab-content {
+    list-style-type: none;
     margin-left: 25%;
     margin-right: 25%;
     border: 1px solid #000;
+    border-top: none;
     padding: 10px;
+    overflow: hidden;
 }
 
-.content_lister {
-    list-style-type: none;
-    margin-right: 10%;
-
+.custom-tab-content h1 {
+    font-size: 15px;
+    margin-top: -0.2%;
 }
 
-.category_list_container li {
-    list-style-type: none;
+.custom-tab-content li {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-bottom: 1px solid #aaa;
 }
 
 .tab:hover {
@@ -136,4 +140,13 @@ body {
     left: 50%;
     transform: translateX(-50%);
     transition: bottom 0.3s ease;
+  }
+
+  a {
+    text-decoration: none; /* Removes underlines */
+    color: #333; /* Sets color to dark gray */
+  }
+  
+  a:hover {
+    color: #666; /* Changes color on hover */
   }
