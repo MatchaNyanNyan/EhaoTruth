@@ -8,18 +8,51 @@
   <title>Reader</title>
 </head>
 <body>
-  <a href="/index.html"><<</a>
-  <div class="number1">
-    "Content of the chapter"
-  </div>
-  <div class="number2" id="file-content"></div>
-  <script>
-    fetch('text.txt')
+  <a href=# id="goBackLink"><<</a>
+  <div class="chapter-content" id="file-content"></div>
+<script>
+
+function parseQueryParameters() {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var params = {};
+
+    urlParams.forEach(function(value, key) {
+        params[key] = decodeURIComponent(value);
+    });
+    return params;
+}
+
+function fetchAndDisplayFileContent() {
+    var params = parseQueryParameters();
+    var story = params['story'];
+    var chapter = params['chapter'];
+
+    var directory = 'library/' + story;
+    var filePath = directory + '/chapter ' + chapter + '.txt';
+
+    fetch(filePath)
         .then(response => response.text())
         .then(text => {
-            document.getElementById('file-content').innerText = text;
+            var fileContentDiv = document.getElementById('file-content');
+            fileContentDiv.innerHTML = text;
         })
-        .catch(error => console.error('Error fetching the text file:', error));
+        .catch(error => console.error('Error fetching the file content:', error));
+}
+
+function generateGoBackLink() {
+    var storedParams = sessionStorage.getItem('queryParams');
+      if (storedParams) {
+        var queryParams = JSON.parse(storedParams);
+        var goBackLink = document.getElementById('goBackLink');
+        var queryString = new URLSearchParams(queryParams).toString();
+        goBackLink.href = 'toc.html?' + queryString;
+        }
+    }
+window.onload = function() {
+  fetchAndDisplayFileContent();
+  generateGoBackLink();
+};
 </script>
 </body>
 </html>

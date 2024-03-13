@@ -8,35 +8,34 @@
     <title>Table of Content</title>
 </head>
 <body>
-    <a href="/index.html"><<</a>
-    <div class="chapter-list" id="file-content2">
-    <div><a href="#" class="file-link">Synopsis 1</a></div>
-    <div><a href="#" class="file-link">Synopsis 2</a></div>
-    <div><a href="#" class="file-link">Synopsis 3</a></div>
-    </div>
+    <a href="/."><<</a>
     <div class="toc-main" id="file-content"></div>
 <script>
-      var fileMappings = {
-            'Synopsis 1': 'library/short story/synopsis.txt',
-            'Synopsis 2': 'library/short story/short two.txt',
-            'Synopsis 3': 'library/short story/short one.txt'
-        };
-        function fetchFile(event) {
-            event.preventDefault();
-            var linkText = this.textContent; 
-            var filePath = fileMappings[linkText];
+        
+        function parseQueryParameters() {
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            return urlParams.get('synopsis');
+        }
+
+        function fetchSynopsisContent() {
+            var synopsisNumber = parseQueryParameters();
+            var synopsisDirectory = 'library/';
+            var synopsisURL = synopsisDirectory + 'synopsis' + synopsisNumber + '.txt';
             
-            fetch(filePath)
+            fetch(synopsisURL)
                 .then(response => response.text())
                 .then(text => {
-                    document.getElementById('file-content').innerText = text;
+                    var synopsisContentDiv = document.getElementById('file-content');
+                    synopsisContentDiv.innerHTML = text;
                 })
-                .catch(error => console.error('Error fetching the file:', error));
+                .catch(error => console.error('Error fetching the chapter content:', error));
         }
-        var links = document.querySelectorAll('.file-link');
-        links.forEach(function(link) {
-            link.addEventListener('click', fetchFile);
-        });
+        
+        var queryParams = { synopsis: parseQueryParameters() };
+        sessionStorage.setItem('queryParams', JSON.stringify(queryParams));
+
+        window.onload = fetchSynopsisContent;
 </script>
 </body>
 </html>

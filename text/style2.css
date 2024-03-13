@@ -1,13 +1,7 @@
-.number1 {
-    text-align: center;
-    margin-top: 5%;
-}
-
-.number2 {
+.chapter-content {
     font-family: system-ui;
-    font-size: 16px;
-    margin-top: 2%;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 30%;
+    margin: 30%;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    white-space: pre-wrap;
 }

@@ -1,3 +1,5 @@
+[Place Holder]
+
 1. In order to build a game-menus. Learn web-app techniques.
 2. Build a website. To host writings, games, art, music, programs, scripts, random calculations, games/martial arts/art-analyses for specific pieces of media, artists, or competitors. 
 3. Learning-quests Journals. Skill Tutorials. Links to resources.
