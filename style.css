@@ -2,10 +2,10 @@
 body { 
     font-family: 'Roboto', sans-serif; 
     font-size: 15px;
-  } 
+} 
 
 /*for the logos*/
-.top_logos{
+.top_logos {
     display: flex;
     margin-left: 10%;
 }
@@ -67,7 +67,10 @@ body {
     flex: 1;
     max-width: 300px;
     height: auto;
-    padding-bottom: 1%;
+}
+
+.side_show {
+    display: none;
 }
 
 .main {
@@ -84,22 +87,40 @@ body {
     margin-top: 1%;
     margin-left: 25%;
     margin-right: 25%;
+    margin-bottom: 0%;
     border: 1px solid #000;
     padding: 10px;
 }
 
-.category_list_container li {
-    margin-right: 2%;
-    border: 1px solid #0001;
-    margin-bottom: 0%;
+.tab_content {
+    display: none;
 }
 
-.category_list_content {
-    display: grid;
+.custom-tab-content {
     margin-left: 25%;
     margin-right: 25%;
     border: 1px solid #000;
     padding: 10px;
+}
+
+.content_lister {
+    list-style-type: none;
+    margin-right: 10%;
+
+}
+
+.category_list_container li {
+    list-style-type: none;
+}
+
+.tab:hover {
+    cursor: pointer;
+    background-color: #aaa;
+}
+
+.quack:hover {
+    cursor: pointer;
+    background-color: #aaa;
 }
 
 .about {
@@ -109,13 +130,10 @@ body {
 }
 
 #border {
+    z-index: -10;
     position: fixed;
-    bottom: -50px; /* Start below the viewport */
+    bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
-    transition: bottom 0.3s ease; /* Transition to animate the slide-up effect */
+    transition: bottom 0.3s ease;
   }
-  
-#scroll-indicator.active {
-    bottom: 20px; /* Slide up into view */
-}
